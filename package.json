@@ -1,6 +1,6 @@
 {
-  "name": "pen-fight-next",
-  "version": "1.0.0",
+  "name": "pen-pitapiti",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev -p 3000",

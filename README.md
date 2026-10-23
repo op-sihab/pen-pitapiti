@@ -1,4 +1,4 @@
-# 🖊️ Desk Wars: Pen Fight (Next.js Edition)
+# 🖊️ পেন পিটাপিটি · Pen Pitapiti (Next.js Edition)
 
 An authentic, physics-driven browser rendition of the classic school desk pen duel game, built with **Next.js 15 (App Router)**, **Pixi.js**, **Planck.js (Box2D)**, and **Supabase Realtime**.
 
@@ -17,7 +17,7 @@ An authentic, physics-driven browser rendition of the classic school desk pen du
 - **✒️ 10 Unique Playable Pens:**
   - Cheap Ballpoint, Gel Pen, Click Pen, 4-Colour Pen, Fountain Pen, Marker, Highlighter, Metal Pen, Neon Stylus, and the custom **Naruto Sage Pen** (সেজ মোড চক্র ও রাসিনগান স্পিন)!
 - **🌐 Full Bilingual Support:**
-  - 100% native translations in **English** and **Bangla (বাংলা)**.
+  - 100% native translations in **English** and **Bangla (বাংলা)** with **Hind Siliguri** & **Plus Jakarta Sans** typography.
 - **🎨 Customization & Progression:**
   - XP progression road (Level 1 to 5), unlockable ink color palettes, and cosmetic stickers.
 
@@ -34,8 +34,8 @@ An authentic, physics-driven browser rendition of the classic school desk pen du
 
 ```bash
 # Clone the repository
-git clone https://github.com/op-sihab/pen-fight-next.git
-cd pen-fight-next
+git clone https://github.com/op-sihab/pen-pitapiti.git
+cd pen-pitapiti
 
 # Install dependencies
 npm install

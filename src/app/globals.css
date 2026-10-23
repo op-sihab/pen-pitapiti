@@ -10,6 +10,8 @@
    ========================================================================== */
 
 :root {
+  --font-title: 'Fredoka', 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-family: var(--font-body);
   color: var(--text);
   background: var(--page);
@@ -37,13 +39,13 @@
   --deskText: #2f3b4b;
   --cream: #f6eedb;
   --cardLip: #d9c79e;
-  --yellow: #f4cf5a;
-  --yellowLip: #c5a23d;
+  --yellow: #10b981;
+  --yellowLip: #059669;
   --navy: #2f3b4b;
   --navyLip: #1e2837;
   --muted: #5a6574;
   --gold: #a8897a;
-  --goldText: #75602a;
+  --goldText: #065f46;
   --divider: #e2d3ad;
   --page: #f4ebd4;
   --arena: #dfe7e7;
@@ -53,12 +55,12 @@
   --p2Lip: #699bbf;
   --sage: #cfe2c4;
   --blue: #9dc8ea;
-  --orange: #e0a05b;
+  --orange: #ff781f;
   --inkBlue: #3d7fd0;
   --wood: #e4c99d;
   --edge: #b18c6c;
   --red: #c85b58;
-  --green: #668648;
+  --green: #10b981;
   --white: #fff;
   --metal: #d8dcde;
   --transparent: transparent;
@@ -301,14 +303,25 @@ html[data-theme=forest] {
    ========================================================================== */
 
 :root {
-  --font-title: 'Fredoka', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-title: 'Fredoka', 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Hind Siliguri', 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-family: var(--font-body);
   color: var(--text);
   background: var(--page);
   font-synthesis: none;
   text-rendering: optimizelegibility;
   font-weight: 700;
+}
+
+:lang(bn), [lang="bn"], [lang="bn"] * {
+  font-family: 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+:lang(bn) .wordmark text,
+[lang="bn"] .wordmark text {
+  font-family: 'Hind Siliguri', sans-serif !important;
+  stroke-width: 10px;
+  letter-spacing: 0;
 }
 
 :root {

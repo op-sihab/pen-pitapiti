@@ -57,12 +57,14 @@
   }
 
   .wordmark .wm-hi {
-    fill: color-mix(in srgb, var(--yellow) 90%, var(--orange) 10%);
+    fill: var(--yellow);
   }
 
   .mh-edition {
     z-index: 1;
-    color: var(--navy);
+    color: #ffffff;
+    font-weight: 800;
+    text-shadow: 0 1px 2px rgba(0, 40, 20, 0.4);
     background: var(--yellow);
     border-radius: 9px;
     margin-top: -2px;
@@ -74,13 +76,13 @@
   }
 
   /* ------------------------------------------------------------------------
-     3. HELP SEAL · round brass badge, top right
+     3. HELP SEAL · round emerald badge, top right
      ------------------------------------------------------------------------ */
 
   .mh-help {
-    color: var(--goldText);
+    color: #ffffff;
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--white) 46%, var(--transparent)), transparent 46%),
+      linear-gradient(180deg, color-mix(in srgb, var(--white) 36%, var(--transparent)), transparent 46%),
       var(--yellow);
     box-shadow: 0 5px 0 var(--yellowLip), var(--home-lift);
     border-radius: 50%;
@@ -100,7 +102,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     4. PLAY KEY · glossy candy button
+     4. PLAY KEY · glossy emerald candy button
      ------------------------------------------------------------------------ */
 
   .mh-play {
@@ -111,18 +113,29 @@
     font-size: 33px;
     letter-spacing: .04em;
     border-radius: 26px;
+    color: #ffffff !important;
     background:
-      linear-gradient(180deg, color-mix(in srgb, var(--white) 55%, var(--yellow) 45%), transparent 52%),
-      linear-gradient(180deg, color-mix(in srgb, var(--yellow) 78%, var(--orange) 22%), color-mix(in srgb, var(--yellow) 68%, var(--yellowLip) 32%));
+      linear-gradient(180deg, color-mix(in srgb, var(--white) 45%, var(--yellow) 55%), transparent 52%),
+      linear-gradient(180deg, var(--yellow), var(--yellowLip));
     box-shadow:
-      0 var(--lift) 0 var(--outline),
-      inset 0 2px 0 color-mix(in srgb, var(--white) 40%, var(--transparent)),
+      0 var(--lift) 0 #047857,
+      inset 0 2px 0 color-mix(in srgb, var(--white) 45%, var(--transparent)),
       var(--home-lift);
   }
 
+  .mh-play span {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 40, 20, 0.5);
+  }
+
   .mh-play svg {
-    filter: drop-shadow(0 2px 0 color-mix(in srgb, var(--navy) 26%, var(--transparent)));
+    filter: drop-shadow(0 2px 4px rgba(0, 40, 20, 0.5));
     transition: transform .18s var(--ease-spring);
+  }
+
+  .mh-play svg path {
+    fill: #ffffff !important;
+    stroke: #ffffff !important;
   }
 
   .mh-play:after {
