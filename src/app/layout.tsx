@@ -50,6 +50,8 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#f4ebd4" },
@@ -68,9 +70,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700;800&family=Hind+Siliguri:wght@500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Atma:wght@600;700&family=Fredoka:wght@600;700&family=Hind+Siliguri:wght@600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="preload" href="/games/pen-fight/js/game.js" as="script" crossOrigin="anonymous" />
+        <link rel="modulepreload" href="/games/pen-fight/js/game.js" />
         <link rel="modulepreload" href="/games/pen-fight/js/canvas-pool.js" />
         <link rel="modulepreload" href="/games/pen-fight/js/render-target.js" />
         <link rel="modulepreload" href="/games/pen-fight/js/texel-range.js" />

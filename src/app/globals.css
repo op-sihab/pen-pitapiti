@@ -303,8 +303,8 @@ html[data-theme=forest] {
    ========================================================================== */
 
 :root {
-  --font-title: 'Fredoka', 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', 'Hind Siliguri', 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-title: 'Atma', 'Fredoka', 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', 'Atma', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-family: var(--font-body);
   color: var(--text);
   background: var(--page);
@@ -314,14 +314,15 @@ html[data-theme=forest] {
 }
 
 :lang(bn), [lang="bn"], [lang="bn"] * {
-  font-family: 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  font-family: 'Atma', 'Hind Siliguri', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 :lang(bn) .wordmark text,
 [lang="bn"] .wordmark text {
-  font-family: 'Hind Siliguri', sans-serif !important;
-  stroke-width: 10px;
-  letter-spacing: 0;
+  font-family: 'Atma', 'Hind Siliguri', sans-serif !important;
+  font-weight: 700;
+  stroke-width: 9px;
+  letter-spacing: 0.5px;
 }
 
 :root {
@@ -488,8 +489,24 @@ html[data-theme=forest] {
   box-sizing: border-box;
 }
 
+html,
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
+  padding: 0;
+  overflow: hidden !important;
+  overscroll-behavior: none;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  width: 0px !important;
+  height: 0px !important;
+  display: none !important;
 }
 
 html {
@@ -5501,7 +5518,7 @@ body.picking:before {
 }
 
 .desk-loader {
-  z-index: 30;
+  z-index: 99999;
   background: color-mix(in srgb, var(--page) 86%, var(--transparent));
   place-items: center;
   padding: 16px;
@@ -5509,6 +5526,10 @@ body.picking:before {
   display: grid;
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden !important;
 }
 
 .desk-loader.leaving {
