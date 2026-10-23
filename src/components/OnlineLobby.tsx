@@ -144,7 +144,8 @@ export function OnlineLobby({
   const [roomCode, setRoomCode] = useState<string | null>(initialRoom || null);
   const [joinCode, setJoinCode] = useState(initialRoom || "");
   const [error, setError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   // Player selections
   const [penIndex, setPenIndex] = useState(() => {
@@ -506,16 +507,38 @@ export function OnlineLobby({
     }
   }, [cleanRoomUrl, onCancel, onLeaveRoom, router]);
 
+  const copyCode = async () => {
+    if (!roomCode) return;
+    try {
+      await navigator.clipboard.writeText(roomCode);
+      setCopiedCode(true);
+      setTimeout(() => setCopiedCode(false), 2000);
+    } catch {
+      setError("Copy failed — copy code manually.");
+    }
+  };
+
   const copyLink = async () => {
     if (!roomCode) return;
     const url = `${window.location.origin}/games/pen-fight/?room=${roomCode}`;
     try {
       await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopiedLink(true);
+      setTimeout(() => setCopiedLink(false), 2000);
     } catch {
       setError("Copy failed — copy code manually.");
     }
+  };
+
+  const pasteCode = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      if (text) {
+        const match = text.trim().toUpperCase().match(/(PF-[A-Z0-9]{4}|[A-Z0-9]{4,7})/);
+        const code = match ? match[0] : text.trim().slice(0, 7).toUpperCase();
+        setJoinCode(code);
+      }
+    } catch {}
   };
 
   const oppPen = opponent?.loadout?.pen ? getPen(opponent.loadout.pen) : null;
@@ -815,7 +838,7 @@ export function OnlineLobby({
                 ) : (
                   <div className="room-panel">
                     <p className="room-panel-note">
-                      Enter the 7-character invite code (e.g. PF-XXXX) to connect.
+                      Enter the 7-character invite code (e.g. PF-XXXX) or paste from clipboard.
                     </p>
                     <div className="join-field-row">
                       <input
@@ -828,12 +851,23 @@ export function OnlineLobby({
                       />
                       <button
                         type="button"
-                        className="online-cta-btn"
-                        style={{ minWidth: 90 }}
+                        className="join-paste-btn"
+                        title="Paste code from clipboard"
+                        onClick={() => void pasteCode()}
+                      >
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                          <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                        </svg>
+                        <span>Paste</span>
+                      </button>
+                      <button
+                        type="button"
+                        className="online-cta-btn join-submit-btn"
                         disabled={phase === "connecting" || joinCode.trim().length < 4}
                         onClick={() => void handleJoin(joinCode)}
                       >
-                        <span>{phase === "connecting" ? "…" : "Join"}</span>
+                        <span>{phase === "connecting" ? "…" : "Join Duel"}</span>
                       </button>
                     </div>
                   </div>
@@ -846,12 +880,33 @@ export function OnlineLobby({
                 {/* Live Room Info */}
                 <div className="room-code-card">
                   <div className="room-code-tag">
-                    <span className="room-code-label">Room Code</span>
+                    <span className="room-code-label">INVITE CODE</span>
                     <span className="room-code-val">{roomCode}</span>
                   </div>
-                  <button type="button" className="room-copy-btn" onClick={copyLink}>
-                    {copied ? "Copied! ✓" : "Copy Link"}
-                  </button>
+                  <div className="room-code-actions">
+                    <button
+                      type="button"
+                      className="room-copy-btn primary"
+                      onClick={() => void copyCode()}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                      </svg>
+                      <span>{copiedCode ? "Copied! ✓" : "Copy Code"}</span>
+                    </button>
+                    <button
+                      type="button"
+                      className="room-copy-btn secondary"
+                      onClick={() => void copyLink()}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                      </svg>
+                      <span>{copiedLink ? "Link Copied! ✓" : "Copy Link"}</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Peer cards */}
