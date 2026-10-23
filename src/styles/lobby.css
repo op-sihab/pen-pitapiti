@@ -1,0 +1,611 @@
+/* ==========================================================================
+   ONLINE DUEL — UNIFIED WITH NATIVE #pen-picker LAYOUT & STYLES
+   ========================================================================== */
+
+#online-lobby {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100svh !important;
+  z-index: 50 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+:is(#pen-picker, #online-lobby) .side-label {
+  display: block !important;
+  color: color-mix(in srgb, var(--cream) 85%, transparent);
+  font: 800 11px var(--font-body);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+/* Mode chip */
+:is(#pen-picker, #online-lobby) .mode-chip,
+.mode-chip[data-mode="online"],
+.mode-chip {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  background: rgba(15, 23, 42, 0.78) !important;
+  color: #ffffff !important;
+  border: 2px solid rgba(255, 255, 255, 0.28) !important;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35) !important;
+  border-radius: 14px !important;
+  padding: 6px 14px !important;
+  font: 800 13px var(--font-body) !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+:is(#pen-picker, #online-lobby) .mode-chip span,
+.mode-chip[data-mode="online"] span {
+  color: #ffffff !important;
+}
+
+:is(#pen-picker, #online-lobby) .mode-chip svg,
+.mode-chip[data-mode="online"] svg {
+  stroke: #ffffff !important;
+}
+
+/* Online room & setup side group */
+.online-setup-box {
+  background: var(--card);
+  border: 2px solid var(--outline);
+  border-radius: 16px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 0 var(--outline);
+}
+
+/* Room Action Tabs (Create / Join buttons) */
+.room-tab-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.room-tab-row button {
+  border: 2px solid var(--outline);
+  min-width: 0;
+  min-height: 42px;
+  color: var(--text);
+  background: var(--card);
+  box-shadow: 0 4px 0 var(--outline);
+  font: 800 13px var(--font-body);
+  cursor: pointer;
+  border-radius: 14px;
+  flex: 1;
+  padding: 8px 10px;
+  transition: all 0.12s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.room-tab-row button[aria-pressed="true"] {
+  color: var(--navy);
+  background: var(--yellow);
+  box-shadow: 0 4px 0 var(--yellowLip, #a66a00);
+}
+
+.room-tab-row button:active {
+  box-shadow: 0 1px 0 var(--outline);
+  transform: translateY(3px);
+}
+
+/* Room action panels */
+.room-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.room-panel-note {
+  font: 600 12px var(--font-body);
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.online-cta-btn {
+  width: 100%;
+  min-height: 44px;
+  background: var(--yellow);
+  color: var(--navy);
+  border: 2px solid var(--outline);
+  border-radius: 14px;
+  box-shadow: 0 4px 0 var(--yellowLip, #a66a00);
+  font: 800 14px var(--font-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+}
+
+.online-cta-btn:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.online-cta-btn:active:not(:disabled) {
+  box-shadow: 0 1px 0 var(--outline);
+  transform: translateY(3px);
+}
+
+.online-cta-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: 0 2px 0 var(--outline);
+}
+
+.join-field-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.join-field-row .text-field {
+  flex: 1;
+  min-height: 44px;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Live room view */
+.online-live-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.online-live-box .room-code-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--sunk, #e2d2ae);
+  padding: 8px 12px;
+  border-radius: 14px;
+  border: 2px solid var(--outline);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.room-code-tag {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-code-label {
+  font: 800 10px var(--font-body);
+  text-transform: uppercase;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.room-code-val {
+  font: 900 17px var(--font-mono, monospace);
+  color: var(--navy);
+  letter-spacing: 0.08em;
+}
+
+.room-copy-btn {
+  background: var(--card);
+  border: 2px solid var(--outline);
+  border-radius: 10px;
+  box-shadow: 0 3px 0 var(--outline);
+  font: 800 12px var(--font-body);
+  color: var(--text);
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.room-copy-btn:active {
+  box-shadow: 0 1px 0 var(--outline);
+  transform: translateY(2px);
+}
+
+.peer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.peer-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 2px solid var(--outline);
+  box-shadow: 0 2px 0 var(--outline);
+}
+
+.peer-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.peer-card-name {
+  font: 800 13px var(--font-body);
+  color: var(--text);
+}
+
+.peer-card-sub {
+  font: 600 11px var(--font-body);
+  color: var(--muted);
+}
+
+.peer-card-status {
+  font: 800 11px var(--font-body);
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1.5px solid var(--outline);
+}
+
+.peer-card-status[data-ready="true"] {
+  background: #a3e635;
+  color: #1a3805;
+}
+
+.peer-card-status[data-ready="false"] {
+  background: #fde047;
+  color: #713f12;
+}
+
+.room-leave-btn {
+  background: transparent;
+  border: none;
+  color: #e11d48;
+  font: 800 12px var(--font-body);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 4px 0;
+  text-align: right;
+}
+
+/* Desk / Board picker in side group */
+.desk-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.desk-picker-grid .choice-card {
+  min-height: 58px;
+  padding: 4px;
+  border-radius: 10px;
+  background: var(--card);
+  border: 2px solid var(--outline);
+  box-shadow: 0 3px 0 var(--outline);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.12s ease;
+}
+
+.desk-picker-grid .choice-card .choice-art {
+  height: 34px;
+  width: 100%;
+}
+
+.desk-picker-grid .choice-card .choice-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.desk-picker-grid .choice-card span {
+  font: 800 11px var(--font-body);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--text);
+}
+
+.desk-picker-grid .choice-card[aria-checked="true"] {
+  background: var(--yellow);
+  color: var(--navy);
+  border-color: var(--outline);
+  box-shadow: 0 3px 0 var(--outline);
+  transform: translateY(-1px);
+}
+
+.field-error-text {
+  color: #e11d48;
+  font: 700 12px var(--font-body);
+  margin: 4px 0 0;
+}
+
+/* ==========================================================================
+   PERFECT CIRCLE INK SWATCHES & COLOR PICKER
+   Eliminates oval/egg distortion completely
+   ========================================================================== */
+
+:is(#pen-picker, #online-lobby) .pick-ink-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 10px auto 4px !important;
+  flex-wrap: wrap !important;
+  max-width: 320px !important;
+  padding: 0 4px !important;
+}
+
+:is(#pen-picker, #online-lobby) .pick-quick-ink {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  aspect-ratio: 1 / 1 !important;
+  flex: 0 0 28px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  border: 2px solid var(--outline, #1e293b) !important;
+  background: var(--card, #fff) !important;
+  box-shadow: 0 2.5px 0 var(--outline, #1e293b) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  transition: transform 0.12s ease !important;
+  overflow: hidden !important;
+}
+
+:is(#pen-picker, #online-lobby) .pick-quick-ink:hover {
+  transform: scale(1.15) !important;
+}
+
+:is(#pen-picker, #online-lobby) .pick-quick-ink.checked {
+  outline: none !important;
+  border-color: var(--navy, #1e293b) !important;
+  box-shadow: 0 0 0 2px var(--card, #fff), 0 0 0 4.5px var(--yellow, #f59e0b) !important;
+  transform: scale(1.15) !important;
+}
+
+:is(#pen-picker, #online-lobby) .pick-quick-ink .ink-swatch {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  max-width: 18px !important;
+  max-height: 18px !important;
+  aspect-ratio: 1 / 1 !important;
+  flex: 0 0 18px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.25) !important;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.4), inset 0 -2px 0 rgba(0, 0, 0, 0.2) !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+:is(#pen-picker, #online-lobby) .custom-color-pick {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  min-height: 28px !important;
+  max-width: 28px !important;
+  max-height: 28px !important;
+  aspect-ratio: 1 / 1 !important;
+  flex: 0 0 28px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-radius: 50% !important;
+  border: 2px dashed var(--outline, #1e293b) !important;
+  background: var(--card, #fff) !important;
+  box-shadow: 0 2.5px 0 var(--outline, #1e293b) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+  transition: transform 0.12s ease !important;
+}
+
+:is(#pen-picker, #online-lobby) .custom-color-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  color: var(--text, #1e293b) !important;
+}
+
+:is(#pen-picker, #online-lobby) .custom-color-icon svg {
+  width: 15px !important;
+  height: 15px !important;
+  display: block !important;
+  stroke: var(--text, #1e293b) !important;
+}
+
+:is(#pen-picker, #online-lobby) .custom-color-pick:hover {
+  transform: scale(1.15) !important;
+}
+
+:is(#pen-picker, #online-lobby) .custom-color-pick.checked {
+  border-style: solid !important;
+  border-color: var(--navy, #1e293b) !important;
+  box-shadow: 0 0 0 2px var(--card, #fff), 0 0 0 4.5px var(--yellow, #f59e0b) !important;
+  transform: scale(1.15) !important;
+}
+
+/* ==========================================================================
+   MOBILE & PORTRAIT RESPONSIVE LAYOUT FOR ONLINE DUEL
+   Completely resolves card squashing, overflow, and element collision.
+   ========================================================================== */
+@media (max-width: 768px), (orientation: portrait) {
+  #online-lobby {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding: 12px 14px 40px !important;
+    height: 100vh !important;
+    height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  #online-lobby .topbar {
+    flex-shrink: 0 !important;
+    margin-bottom: 12px !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #online-lobby .pick-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: none !important;
+    height: auto !important;
+    min-height: min-content !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+    gap: 16px !important;
+    padding-bottom: 24px !important;
+  }
+
+  #online-lobby .pick-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    flex: none !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px 12px 18px !important;
+    position: relative !important;
+  }
+
+  #online-lobby .pick-stage {
+    min-height: 140px !important;
+    height: 140px !important;
+    width: 100% !important;
+    position: relative !important;
+    margin: 6px 0 8px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #online-lobby .pick-hero {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #online-lobby .pick-name-line {
+    margin-top: 4px !important;
+  }
+
+  #online-lobby .pick-role {
+    margin: 2px 0 8px !important;
+  }
+
+  #online-lobby .pick-seg {
+    margin-top: 2px !important;
+    margin-bottom: 8px !important;
+  }
+
+  #online-lobby .pick-ink-row {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 6px auto 4px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+
+  #online-lobby .pick-side {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: none !important;
+    width: 100% !important;
+    gap: 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  #online-lobby .side-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  #online-lobby .name-group {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin: 0 !important;
+  }
+
+  #online-lobby .name-chip {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #online-lobby .online-setup-box {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #online-lobby .desk-picker-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #online-lobby .ready-group {
+    width: 100% !important;
+    margin-top: 4px !important;
+    margin-bottom: 20px !important;
+  }
+
+  #online-lobby .pick-fight {
+    width: 100% !important;
+    min-height: 52px !important;
+    font-size: 18px !important;
+  }
+}
+

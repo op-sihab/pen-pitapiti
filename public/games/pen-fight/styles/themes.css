@@ -1,0 +1,66 @@
+/* ==========================================================================
+   2. THEMES & COLOR MODES
+   Light, Dark, Obsidian Gold (Midnight), Cyber Neon, Forest Matcha
+   ========================================================================== */
+
+[data-theme=dark] .pen-card {
+  border-color: var(--outline);
+}
+
+[data-theme=dark] .pen-hero svg>ellipse {
+  display: none;
+}
+
+[data-theme=dark] :is(.pen-hero,.level-toast,.pen-arrow) svg {
+  filter: drop-shadow(1.5px 0 0 var(--iconTile)) drop-shadow(-1.5px 0 0 var(--iconTile)) drop-shadow(0 1.5px 0 var(--iconTile)) drop-shadow(0 -1.5px 0 var(--iconTile));
+}
+
+[data-theme=dark] .desk-loader svg {
+  filter: drop-shadow(1.5px 0 0 var(--iconTile)) drop-shadow(-1.5px 0 0 var(--iconTile)) drop-shadow(0 1.5px 0 var(--iconTile)) drop-shadow(0 -1.5px 0 var(--iconTile));
+}
+
+[data-theme=dark] {
+  --outline: var(--navyLip);
+  --raised: var(--card);
+  --sunk: var(--page);
+}
+
+[data-theme=dark] .field-error {
+  color: color-mix(in srgb, var(--red) 55%, var(--cream));
+}
+
+[data-theme=dark] :is(.pen-hero,.mini-pen,.info-hero .pen-hero) svg.real-pen {
+  filter: drop-shadow(0 0 2px var(--iconTile));
+}
+
+[data-theme=dark] .good h3 {
+  color: var(--sage);
+}
+
+[data-theme=dark] .careful h3 {
+  color: color-mix(in srgb, var(--red) 55%, var(--cream));
+}
+
+[data-theme=dark] :is(.mini-pen,.info-hero .pen-hero) svg {
+  filter: drop-shadow(1.5px 0 0 var(--iconTile)) drop-shadow(-1.5px 0 0 var(--iconTile)) drop-shadow(0 1.5px 0 var(--iconTile)) drop-shadow(0 -1.5px 0 var(--iconTile));
+}
+
+[data-theme=dark] #pen-picker .pick-seg button {
+  color: var(--navy);
+}
+
+[data-theme=dark] .link-key {
+  color: color-mix(in srgb, var(--inkBlue) 55%, var(--cream));
+}
+
+html[data-theme=midnight] {
+  --vignette: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%);
+}
+
+html[data-theme=cyber] {
+  --vignette: radial-gradient(ellipse at center, transparent 35%, rgba(0,240,255,0.06) 100%);
+}
+
+html[data-theme=forest] {
+  --vignette: radial-gradient(ellipse at center, transparent 40%, rgba(20,40,25,0.4) 100%);
+}

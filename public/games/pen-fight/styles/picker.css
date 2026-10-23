@@ -1,0 +1,1191 @@
+/* ==========================================================================
+   6. PENCIL CASE & PEN PICKER
+   Carousel stage, pen SVGs, stats cards, 11 pigments, custom color wheel
+   ========================================================================== */
+
+.brand-mark .ink-pen {
+  flex: none;
+  width: 60px;
+  height: auto;
+  transform: rotate(-33deg);
+}
+
+.picking .intro {
+  display: none;
+}
+
+#pen-picker {
+  flex-direction: column;
+  gap: 14px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 22px;
+  padding-bottom: 12px;
+  display: flex;
+}
+
+.pick-heading {
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  display: flex;
+}
+
+.pick-heading h1 {
+  text-wrap: balance;
+  font-size: clamp(25px,3vw,34px);
+}
+
+.pick-note {
+  color: var(--muted);
+  margin: 6px 0 0;
+  font-size: 13px;
+}
+
+.pick-player {
+  width: 52px;
+  height: 48px;
+  font: 700 21px var(--font-title);
+  background: var(--p1);
+  color: var(--navy);
+  border: 2px solid var(--navy);
+  box-shadow: 0 4px 0 var(--p1Lip);
+  border-radius: 16px;
+  flex-shrink: 0;
+  place-items: center;
+  display: grid;
+  transform: rotate(5deg);
+}
+
+[data-player="1"] .pick-player {
+  background: var(--p2);
+  box-shadow: 0 4px 0 var(--p2Lip);
+}
+
+#pick-title:focus {
+  outline: none;
+}
+
+.ink-swatch {
+  border: 2px solid var(--navy);
+  background: var(--inkBlue);
+  width: 20px;
+  height: 20px;
+  box-shadow: inset 0 -3px 0 color-mix(in srgb, var(--navy) 22%, var(--transparent));
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ink-swatch[data-ink=violet] {
+  background: var(--inkViolet);
+}
+
+.ink-swatch[data-ink=green] {
+  background: var(--green);
+}
+
+.pick-actions {
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+}
+
+.pick-buttons {
+  align-items: center;
+  gap: 12px;
+  display: flex;
+}
+
+.pick-confirm,.pick-back {
+  font: 800 15px var(--font-body);
+  cursor: pointer;
+  border: 0;
+  border-radius: 18px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  transition: transform 90ms,box-shadow 90ms;
+  display: inline-flex;
+}
+
+.pick-confirm {
+  min-height: 56px;
+  color: var(--navy);
+  background: var(--yellow);
+  box-shadow: 0 5px 0 var(--yellowLip);
+}
+
+.pick-confirm:active,.pick-confirm.pressed {
+  box-shadow: 0 1px 0 var(--yellowLip);
+  transform: translateY(4px);
+}
+
+.pick-back {
+  min-height: 56px;
+  color: var(--text);
+  background: var(--card);
+  box-shadow: 0 4px 0 var(--cardLip);
+}
+
+.pick-back:active {
+  box-shadow: 0 1px 0 var(--cardLip);
+  transform: translateY(3px);
+}
+
+.pick-confirm svg,.pick-back svg {
+  flex-shrink: 0;
+}
+
+.settings-group.about .about-links a {
+  color: var(--text);
+  text-underline-offset: 3px;
+  font-weight: 800;
+}
+
+.settings-group.about .about-links a:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+[data-motion=reduce] :is(.chunky-button,.menu-key,.choice-chip,.choice-card,.switch-track,.switch-knob,.close-key,.pause-key,.info-key,.pick-confirm,.pick-back,.cosmetic-chip,.match-options button,.style-toggle button,.pen-arrow) {
+  transition: none;
+}
+
+#pen-picker {
+  width: 100%;
+  max-width: 480px;
+}
+
+.pick-heading h1,h1 {
+  font-size: var(--type-heading);
+  line-height: 1.15;
+}
+
+.pick-note,.pen-card .pen-role {
+  font-size: var(--type-label);
+  line-height: 1.45;
+}
+
+.match-options button,.style-toggle button,.pick-confirm,.pick-back {
+  font-size: var(--type-body);
+}
+
+.pick-back,.pick-confirm {
+  white-space: normal;
+}
+
+[data-layout=phone-landscape] body.picking main {
+  padding: max(8px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+
+[data-layout=phone-landscape] body.picking :is(.intro,footer,.edition) {
+  display: none;
+}
+
+[data-layout=phone-landscape] body.picking .masthead {
+  margin-bottom: 0;
+  padding-bottom: 6px;
+}
+
+[data-layout=phone-landscape] body.picking .brand-mark {
+  width: 34px;
+  height: 34px;
+}
+
+[data-layout=phone-landscape] body.picking .brand-mark .ink-pen {
+  width: 42px;
+}
+
+[data-layout=phone-landscape] body.picking #pen-picker {
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-areas: "card top""card head""card actions""card save";
+  gap: 8px 16px;
+  max-width: 880px;
+  padding: 8px 0 0;
+  display: grid;
+}
+
+[data-layout=phone-landscape] body.picking .match-options {
+  grid-area: top;
+  gap: 6px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-heading {
+  grid-area: head;
+}
+
+[data-layout=phone-landscape] body.picking .pen-card {
+  grid-area: card;
+  align-self: start;
+  gap: 4px;
+  padding: 8px 10px 10px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-actions {
+  grid-area: actions;
+  align-self: end;
+  gap: 10px;
+}
+
+[data-layout=phone-landscape] body.picking .save-notice {
+  grid-area: save;
+}
+
+[data-layout=phone-landscape] body.picking .match-options button {
+  min-height: 44px;
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-note {
+  margin-top: 2px;
+  font-size: 13px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-name {
+  margin-top: 4px;
+}
+
+[data-layout=phone-landscape] body.picking .pen-card .pen-hero {
+  height: 78px;
+}
+
+[data-layout=phone-landscape] body.picking .pen-card .pen-hero svg {
+  height: 72px;
+}
+
+[data-layout=phone-landscape] body.picking .pen-name-line h2 {
+  font-size: 20px;
+}
+
+[data-layout=phone-landscape] body.picking .pen-card .pen-role {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+[data-layout=phone-landscape] body.picking .style-toggle button {
+  min-width: 80px;
+  font-size: 14px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-confirm {
+  min-height: 50px;
+  padding: 10px 16px;
+  font-size: 16px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-back {
+  min-height: 50px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+[data-layout=phone-landscape] body.picking .equal-toggle {
+  font-size: 13px;
+}
+
+.pick-name {
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 4px 8px;
+  max-width: 360px;
+  margin-top: 8px;
+  display: grid;
+}
+
+.pick-name .text-field {
+  min-height: 44px;
+  font-size: 16px;
+}
+
+.pick-name .field-error {
+  grid-column: 1/-1;
+  margin: 0;
+}
+
+.pick-name .field-error:empty {
+  display: none;
+}
+
+body.picking .pick-actions {
+  flex-flow: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+body.picking .equal-toggle {
+  flex: 1 0 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 50px;
+}
+
+body.picking .equal-text {
+  flex: 1;
+  min-width: 0;
+}
+
+body.picking .equal-text strong {
+  white-space: nowrap;
+}
+
+body.picking .pick-buttons {
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 12px;
+  display: flex;
+}
+
+body.picking .pick-buttons :is(.pick-back,.pick-confirm) {
+  white-space: nowrap;
+  gap: 8px;
+  min-height: 52px;
+  padding: 12px 16px;
+  font-size: 15px;
+}
+
+body.picking .pick-back {
+  flex: none;
+}
+
+body.picking .pick-confirm {
+  flex: 1 0 auto;
+}
+
+[data-layout=phone-landscape] body.picking .equal-toggle {
+  min-height: 44px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-buttons :is(.pick-back,.pick-confirm) {
+  min-height: 48px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+html[data-layout=phone-landscape] body.picking .mode-options {
+  grid-template-columns: max-content max-content minmax(0,1fr);
+  gap: 6px;
+}
+
+html[data-layout=phone-landscape] body.picking .mode-options button {
+  gap: 5px;
+  padding-inline: 8px;
+}
+
+html[data-layout=phone-landscape] body.picking .mode-options button>svg {
+  flex: none;
+  width: 18px;
+  height: 18px;
+}
+
+body.picking .fair-options .equal-toggle {
+  min-height: 44px;
+}
+
+[data-layout=phone-landscape] body.picking .fair-options {
+  gap: 0;
+}
+
+[data-layout=phone-landscape] body.picking .fair-options .equal-toggle {
+  gap: 4px;
+  min-height: 44px;
+}
+
+[data-layout=phone-landscape] body.picking .fair-options .equal-note {
+  font-size: 11px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-actions {
+  gap: 4px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-note {
+  display: none;
+}
+
+[data-layout=phone-landscape] body.picking .pick-heading h1 {
+  font-size: 20px;
+}
+
+[data-layout=phone-landscape] body.picking #pen-picker {
+  row-gap: 4px;
+}
+
+[data-layout=phone-landscape] body.picking .match-options {
+  gap: 4px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-heading h1 {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+[data-layout=phone-landscape] body.picking .name-chip {
+  margin-top: 0;
+}
+
+[data-layout=phone-landscape] body.picking .pick-buttons {
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-back {
+  width: 44px;
+  min-width: 44px;
+  padding-inline: 10px;
+}
+
+[data-layout=phone-landscape] body.picking .pick-back span {
+  display: none;
+}
+
+[data-layout=phone-landscape] body.picking .pick-confirm {
+  flex-basis: 0;
+  min-width: 0;
+  padding-inline: 8px;
+  font-size: 13px;
+}
+
+body.picking:before {
+  content: none;
+  display: none;
+}
+
+#main-menu,#pen-picker#pen-picker {
+  isolation: isolate;
+  width: 100%;
+  max-width: none;
+  height: 100svh;
+  min-height: 0;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  zoom: 1;
+  background: 0 0;
+  border: 0;
+  border-radius: 0;
+  flex-direction: column;
+  grid-template-columns: none;
+  grid-template-areas: none;
+  gap: 0;
+  margin: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden auto;
+}
+
+#main-menu:before,#pen-picker#pen-picker:before {
+  content: "";
+  z-index: -2;
+  background: var(--menu-desk) center / cover no-repeat, var(--wood);
+  pointer-events: none;
+  width: 112vw;
+  height: 112vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#main-menu:after,#pen-picker#pen-picker:after {
+  content: "";
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 90% 70% at 50% 45%, color-mix(in srgb, var(--vignette) 42%, var(--transparent)), color-mix(in srgb, var(--vignette) 72%, var(--transparent)));
+  position: fixed;
+  inset: 0;
+}
+
+:is(#main-menu,#pen-picker) :is(button,label):focus-visible {
+  outline: 3px solid var(--inkBlue);
+  outline-offset: 4px;
+}
+
+#pen-picker .tchip:has(input:focus-visible) {
+  outline: 3px solid var(--inkBlue);
+  outline-offset: 4px;
+}
+
+#pen-picker .pick-body {
+  flex-direction: column;
+  flex: 1;
+  gap: 14px;
+  width: 100%;
+  max-width: 520px;
+  min-height: 0;
+  margin: 0 auto;
+  display: flex;
+}
+
+#pen-picker .pick-card {
+  border: 3px solid var(--outline);
+  min-height: 0;
+  max-height: 540px;
+  color: var(--text);
+  background: var(--card);
+  box-shadow: 0 7px 0 var(--outline);
+  text-align: center;
+  border-radius: 26px;
+  flex-direction: column;
+  flex: auto;
+  align-items: center;
+  padding: 14px 12px 16px;
+  display: flex;
+  position: relative;
+}
+
+#pen-picker .card-top {
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 0 4px;
+  display: flex;
+}
+
+#pen-picker .card-top .info-key,#pen-picker .info-space {
+  border-radius: 13px;
+  width: 40px;
+  height: 40px;
+}
+
+#pen-picker .card-top .info-key svg {
+  width: 26px;
+  height: 26px;
+}
+
+#pen-picker .pick-dots {
+  gap: 5px;
+  display: flex;
+}
+
+#pen-picker .pick-dots i {
+  background: var(--divider);
+  border-radius: 4px;
+  width: 7px;
+  height: 7px;
+  transition: width .16s;
+  display: block;
+}
+
+#pen-picker .pick-dots i.on {
+  background: var(--orange);
+  width: 18px;
+}
+
+#pen-picker .pick-stage {
+  flex: 1;
+  width: 100%;
+  min-height: 120px;
+  margin: 10px 0 12px;
+  position: relative;
+}
+
+#pen-picker .pick-hero {
+  border: 3px solid var(--outline);
+  background: var(--menu-desk) center 30% / 180% auto, var(--wood);
+  box-shadow: 0 4px 0 var(--outline), inset 0 -14px 30px color-mix(in srgb, var(--edge) 30%, var(--transparent));
+  border-radius: 20px;
+  place-items: center;
+  display: grid;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+#pen-picker .pick-hero:before {
+  content: "";
+  background: radial-gradient(ellipse 60% 45% at 50% 50%, color-mix(in srgb, var(--woodHighlight) 35%, var(--transparent)), color-mix(in srgb, var(--woodHighlight) 0%, var(--transparent)) 70%);
+  position: absolute;
+  inset: 0;
+}
+
+#pen-picker .pick-hero :is(svg,img.pick-pen-img) {
+  width: 60%;
+  max-width: none;
+  height: auto;
+  display: block;
+  position: relative;
+  transform: rotate(-20deg);
+}
+
+#pen-picker .pick-arrow {
+  z-index: 2;
+  border: 2px solid var(--outline);
+  width: 44px;
+  height: 44px;
+  color: var(--navy);
+  background: var(--iconTile);
+  box-shadow: 0 4px 0 var(--outline);
+  cursor: pointer;
+  border-radius: 14px;
+  place-items: center;
+  margin-top: -22px;
+  padding: 0;
+  transition: transform .12s;
+  display: grid;
+  position: absolute;
+  top: 50%;
+}
+
+#pen-picker .pick-arrow:active {
+  box-shadow: 0 1px 0 var(--outline);
+  transform: translateY(3px);
+}
+
+#pen-picker .pick-arrow:disabled {
+  opacity: .45;
+  cursor: default;
+  transform: none;
+}
+
+#pen-picker .pick-arrow.prev {
+  left: 10px;
+}
+
+#pen-picker .pick-arrow.next {
+  right: 10px;
+}
+
+#pen-picker .pick-arrow svg {
+  width: 26px;
+  height: 26px;
+}
+
+#pen-picker .pick-name-line h2 {
+  font: 700 31px/1.15 var(--font-title);
+  letter-spacing: -.01em;
+  margin: 0;
+}
+
+#pen-picker .pick-role {
+  color: var(--muted);
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+#pen-picker .pick-seg {
+  border: 2px solid var(--outline);
+  background: var(--iconTile);
+  border-radius: 14px;
+  gap: 3px;
+  margin-top: 10px;
+  padding: 3px;
+  display: flex;
+}
+
+#pen-picker .pick-seg button {
+  min-height: 32px;
+  color: var(--muted);
+  box-shadow: none;
+  font: 800 13px var(--font-body);
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  border-radius: 10px;
+  padding: 5px 14px;
+}
+
+#pen-picker .pick-seg button[aria-checked=true] {
+  color: var(--navy);
+  background: var(--yellow);
+  box-shadow: inset 0 0 0 2px var(--outline);
+}
+
+#pen-picker .pick-seg button:disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+#pen-picker .pick-side,#pen-picker .side-group {
+  display: contents;
+}
+
+#pen-picker .side-label {
+  color: color-mix(in srgb, var(--cream) 85%, var(--transparent));
+  font: 800 11px var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  display: none;
+}
+
+#pen-picker .name-group {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  display: flex;
+}
+
+#pen-picker .name-chip {
+  border: 2px solid var(--outline);
+  min-height: 40px;
+  box-shadow: 0 3px 0 var(--outline);
+  margin: 0;
+}
+
+#pen-picker .pick-chosen {
+  color: var(--cream);
+  font: 800 13px var(--font-body);
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--vignette) 60%, var(--transparent));
+  margin: 0;
+}
+
+#pen-picker .pick-name {
+  width: 100%;
+  margin: 0;
+}
+
+#pen-picker .pick-name .field-error {
+  color: var(--cream);
+}
+
+#pen-picker .level-row {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+#pen-picker .level-row>span {
+  color: color-mix(in srgb, var(--cream) 85%, var(--transparent));
+  font: 800 11px var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-right: 2px;
+}
+
+#pen-picker .level-row button {
+  border: 2px solid var(--outline);
+  min-width: 0;
+  min-height: 44px;
+  color: var(--text);
+  background: var(--card);
+  box-shadow: 0 4px 0 var(--outline);
+  font: 800 14px var(--font-body);
+  cursor: pointer;
+  border-radius: 14px;
+  flex: 1;
+  padding: 6px 8px;
+}
+
+#pen-picker .level-row button[aria-pressed=true] {
+  color: var(--navy);
+  background: var(--p2);
+}
+
+#pen-picker .level-row button:active {
+  box-shadow: 0 1px 0 var(--outline);
+  transform: translateY(3px);
+}
+
+#pen-picker .level-row.four {
+  gap: 6px;
+}
+
+#pen-picker .level-row.four button {
+  padding-inline: 4px;
+}
+
+#pen-picker .level-row .level-locked {
+  color: var(--muted);
+  background: var(--sunk);
+  box-shadow: none;
+  cursor: default;
+  border-style: dashed;
+  position: relative;
+}
+
+#pen-picker .level-row .level-locked:active {
+  box-shadow: none;
+  transform: none;
+}
+
+#pen-picker .level-row .level-locked svg {
+  border: 2px solid var(--outline);
+  background: var(--card);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  position: absolute;
+  top: -8px;
+  right: -4px;
+}
+
+.pick-soon {
+  z-index: 30;
+  left: 50%;
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 84px);
+  border: 2px solid var(--outline);
+  width: max-content;
+  max-width: calc(100% - 32px);
+  color: var(--text);
+  background: var(--card);
+  box-shadow: 0 4px 0 var(--outline);
+  font: 800 14px/1.3 var(--font-body);
+  pointer-events: none;
+  border-radius: 14px;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 14px;
+  display: flex;
+  position: fixed;
+  transform: translate(-50%);
+}
+
+.pick-soon[hidden] {
+  display: none;
+}
+
+.pick-soon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--muted);
+  flex: none;
+}
+
+.pick-soon.show {
+  animation: .18s ease-out both soon-in;
+}
+
+[data-motion=reduce] .pick-soon.show {
+  animation: none;
+}
+
+#pen-picker .rules {
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  display: grid;
+}
+
+#pen-picker .tchip {
+  border: 2px solid var(--outline);
+  min-width: 0;
+  min-height: 46px;
+  color: var(--text);
+  background: var(--card);
+  box-shadow: 0 4px 0 var(--outline);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 14px;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 5px 7px 5px 6px;
+  display: flex;
+  position: relative;
+}
+
+#pen-picker .tchip input {
+  opacity: 0;
+  pointer-events: none;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  position: absolute;
+}
+
+#pen-picker .tchip:has(input:checked) {
+  color: var(--navy);
+  background: var(--sage);
+}
+
+#pen-picker .tchip:has(input:disabled) {
+  opacity: .5;
+  cursor: default;
+}
+
+#pen-picker .tchip-icon {
+  flex-shrink: 0;
+  place-items: center;
+  display: grid;
+}
+
+#pen-picker .tchip-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+#pen-picker .tchip-text {
+  flex: 1;
+  min-width: 0;
+}
+
+#pen-picker .tchip-text b {
+  font: 800 13px/1.15 var(--font-body);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+}
+
+#pen-picker .tchip-text small {
+  clip-path: inset(50%);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  font: 700 12px/1.3 var(--font-body);
+  color: var(--muted);
+  margin-top: 2px;
+  position: absolute;
+  overflow: hidden;
+}
+
+#pen-picker .tchip:has(input:checked) .tchip-text small {
+  color: color-mix(in srgb, var(--navy) 78%, var(--sage));
+}
+
+#pen-picker .tswitch {
+  --sw-w: 44px;
+  --sw-h: 26px;
+  width: var(--sw-w);
+  height: var(--sw-h);
+  border: 2px solid var(--outline);
+  border-radius: calc(var(--sw-h) / 2);
+  background: color-mix(in srgb, var(--muted) 30%, var(--cream));
+  flex-shrink: 0;
+  transition: background .16s;
+  position: relative;
+}
+
+#pen-picker .tswitch:after {
+  content: "";
+  width: calc(var(--sw-h) - 10px);
+  height: calc(var(--sw-h) - 10px);
+  background: var(--cream);
+  box-shadow: 0 0 0 2px var(--outline);
+  border-radius: 50%;
+  transition: transform .16s cubic-bezier(.3,.7,.4,1);
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+}
+
+#pen-picker .tchip:has(input:checked) .tswitch {
+  background: var(--green);
+}
+
+#pen-picker .tchip:has(input:checked) .tswitch:after {
+  background: var(--white);
+  transform: translate(calc(var(--sw-w) - var(--sw-h)), -50%);
+}
+
+[data-motion=reduce] #pen-picker :is(.tswitch,.pick-dots i) {
+  transition: none;
+}
+
+#pen-picker .pick-buttons {
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 10px;
+  display: flex;
+}
+
+#pen-picker .pick-fight {
+  --lift: 7px;
+  min-width: 0;
+  height: 66px;
+  font: 700 27px var(--font-title);
+  white-space: nowrap;
+  border-radius: 22px;
+  flex: auto;
+  gap: 12px;
+  padding: 0 16px;
+}
+
+#pen-picker .pick-fight svg {
+  width: 34px;
+  height: 34px;
+}
+
+#pen-picker .pick-back {
+  --lift: 7px;
+  white-space: nowrap;
+  border-radius: 22px;
+  flex: none;
+  min-width: 66px;
+  height: 66px;
+  padding: 0 16px;
+  font-size: 15px;
+}
+
+#pen-picker .pick-back span {
+  display: inline;
+}
+
+#pen-picker .pick-back svg {
+  width: 26px;
+  height: 26px;
+}
+
+#pen-picker .save-notice {
+  color: var(--cream);
+  text-align: center;
+}
+
+.help-art .help-diagram,.shrink-intro-art .help-diagram {
+  width: 168px;
+  max-width: 100%;
+  height: auto;
+}
+
+.shrink-intro {
+  text-align: center;
+}
+
+.shrink-intro-art {
+  justify-content: center;
+  margin: 0 0 12px;
+  display: flex;
+}
+
+.shrink-intro h2 {
+  margin-bottom: 10px;
+}
+
+.shrink-intro .dialog-body p {
+  margin: 0 0 8px;
+}
+
+.shrink-intro .dialog-body p:last-child {
+  margin-bottom: 0;
+}
+
+.link-key {
+  min-height: 24px;
+  color: var(--inkBlue);
+  font: inherit;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  padding: 0 2px;
+  text-decoration: underline;
+}
+
+.ink-swatch[data-ink=crimson] {
+  background: #e53935;
+}
+
+.ink-swatch[data-ink=gold] {
+  background: #fbc02d;
+}
+
+.ink-swatch[data-ink=cyan] {
+  background: #00bcd4;
+}
+
+.ink-swatch[data-ink=orange] {
+  background: #ff9800;
+}
+
+.ink-swatch[data-ink=black] {
+  background: #212121;
+}
+
+.ink-swatch[data-ink=pink] {
+  background: #e91e63;
+}
+
+.pick-ink-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 8px auto 2px;
+  flex-wrap: wrap;
+  max-width: 320px;
+}
+
+.pick-quick-ink {
+  padding: 3px!important;
+  min-width: auto!important;
+  border-radius: 50%!important;
+  border: 2px solid var(--navy)!important;
+  cursor: pointer;
+  background: var(--card)!important;
+  transition: transform .15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pick-quick-ink:hover {
+  transform: scale(1.18);
+}
+
+.pick-quick-ink.checked {
+  outline: 3px solid var(--yellow);
+  transform: scale(1.18);
+  box-shadow: 0 0 8px rgba(244,207,90,0.6);
+}
+
+.custom-color-pick {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px dashed var(--navy);
+  cursor: pointer;
+  font-size: 14px;
+  background: var(--card);
+  transition: transform .15s ease;
+}
+
+.custom-color-pick:hover {
+  transform: scale(1.18);
+}
+
+.custom-color-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  color: var(--navy);
+}
+
+.custom-color-icon svg {
+  width: 15px;
+  height: 15px;
+  display: block;
+}
+
+.ink-swatch[data-ink=teal] {
+  background: #0d9488;
+}
+
+.ink-swatch[data-ink=white] {
+  background: #f8fafc;
+  border-color: #64748b;
+}
+
+.ink-swatch {
+  border: 2px solid var(--navy);
+  box-shadow: inset 0 2px 2px rgba(255,255,255,0.45), inset 0 -3px 0 rgba(0,0,0,0.25), 0 2px 4px rgba(0,0,0,0.18);
+  transition: transform .16s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pick-quick-ink:hover .ink-swatch {
+  transform: scale(1.14);
+}
+
+.pick-quick-ink.checked {
+  outline: 3px solid var(--yellow)!important;
+  box-shadow: 0 0 12px rgba(244,207,90,0.8)!important;
+}

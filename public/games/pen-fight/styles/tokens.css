@@ -1,0 +1,61 @@
+/* ==========================================================================
+   1. TOKENS & DESIGN VARIABLES
+   Color palettes, typography tokens, elevation bevels, border radii, shadows
+   ========================================================================== */
+
+:root {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--page);
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  font-weight: 700;
+}
+
+:root {
+  --outline: var(--navy);
+  --raised: var(--card);
+  --sunk: var(--page);
+}
+
+:root[data-input=pointer] :focus-visible,:root[data-input=pointer] canvas:focus {
+  outline: none;
+}
+
+:root[data-input=keyboard] :is(.chunky-button,.menu-key,.choice-chip,.choice-card,.close-key,.info-key,.pause-key,.switch):focus-visible {
+  outline: 3px solid var(--inkBlue);
+  outline-offset: 3px;
+}
+
+:root {
+  --type-heading: clamp(28px, 1.25rem + 2vw, 44px);
+  --type-panel: clamp(22px, 1rem + 1vw, 30px);
+  --type-body: clamp(16px, .875rem + .4vw, 20px);
+  --type-label: clamp(14px, .8rem + .2vw, 16px);
+  --gutter: clamp(16px, 3.34vw, 48px);
+}
+
+:root {
+  --vignette: color-mix(in srgb, var(--edge) 22%, var(--navyLip));
+}
+
+:root:root body:not(.in-match) {
+  background: var(--wood);
+}
+
+:root:root body:not(.in-match) main {
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+:root:root body:not(.in-match) :is(.masthead,.intro,footer) {
+  display: none;
+}
+
+:root[data-input=keyboard] .help-section summary:focus-visible {
+  outline: 3px solid var(--inkBlue);
+  outline-offset: 2px;
+}

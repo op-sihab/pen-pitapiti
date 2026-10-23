@@ -1,0 +1,21 @@
+/* ==========================================================================
+   PEN FIGHT · MASTER MODULAR STYLESHEET
+   Clean Architecture & Scalable Component Design
+
+   NOTE: the app currently loads src/app/globals.css (the compiled bundle) and
+   src/styles/online.css from src/app/layout.tsx. This manifest is the source
+   order for a future consolidation — keep it in sync when adding a module,
+   and mirror any new file into globals.css in the meantime.
+   ========================================================================== */
+
+@import "./tokens.css";
+@import "./themes.css";
+@import "./base.css";
+@import "./components.css";
+@import "./modals.css";
+@import "./picker.css";
+@import "./game.css";
+@import "./setup.css";
+@import "./lobby.css";
+@import "./animations.css";
+@import "./responsive.css";

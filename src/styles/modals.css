@@ -1,0 +1,216 @@
+/* ==========================================================================
+   5. MODALS & SETTINGS SHEETS
+   Dialog overlays, drawer gestures, settings preferences, confirm dialogs
+   ========================================================================== */
+
+.modal-overlay {
+  z-index: 20;
+  padding: 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--navyLip) 46%, var(--transparent));
+  place-items: center;
+  animation: .16s ease-out fade-in;
+  display: grid;
+  position: fixed;
+  inset: 0;
+}
+
+.modal-card {
+  overscroll-behavior: contain;
+  width: min(420px,100%);
+  max-height: calc(100svh - 32px);
+  color: var(--text);
+  background: var(--card);
+  border: 3px solid var(--outline);
+  box-shadow: 0 6px 0 var(--outline);
+  border-radius: 24px;
+  padding: 22px;
+  animation: .2s cubic-bezier(.2,1.3,.5,1) pop-in;
+  position: relative;
+  overflow-y: auto;
+}
+
+.modal-card:focus {
+  outline: none;
+}
+
+.modal-card h2 {
+  font: 700 26px/1.15 var(--font-title);
+  letter-spacing: -.02em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.modal-card h3 {
+  font: 800 11px var(--font-body);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--goldText);
+  margin: 0 0 10px;
+}
+
+.modal-card.sheet {
+  flex-direction: column;
+  width: min(480px,100%);
+  max-height: min(780px,100svh - 32px);
+  padding: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.sheet-head {
+  border-bottom: 2px dashed var(--divider);
+  touch-action: none;
+  cursor: grab;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 22px 18px 14px 22px;
+  display: flex;
+  position: relative;
+}
+
+.sheet-grabber {
+  background: var(--divider);
+  border-radius: 6px;
+  width: 46px;
+  height: 6px;
+  margin-left: -23px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+}
+
+.sheet-title {
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  display: flex;
+}
+
+.sheet-body {
+  overscroll-behavior: contain;
+  padding: 6px 22px 26px;
+  overflow-y: auto;
+}
+
+.modal-card.dragging {
+  transition: none;
+  animation: none;
+}
+
+.modal-card.sheet:not(.dragging) {
+  transition: transform .18s ease-out;
+}
+
+.dialog-head,.pause-head {
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  display: flex;
+}
+
+.dialog-tile {
+  border: 3px solid var(--outline);
+  width: 56px;
+  height: 56px;
+  color: var(--navy);
+  background: var(--sage);
+  box-shadow: 0 4px 0 var(--outline);
+  border-radius: 17px;
+  flex-shrink: 0;
+  place-items: center;
+  display: grid;
+  transform: rotate(-4deg);
+}
+
+.dialog-tile.danger {
+  background: color-mix(in srgb, var(--red) 55%, var(--cream));
+}
+
+.dialog-tile.p1 {
+  background: var(--p1);
+}
+
+.dialog-body {
+  color: var(--muted);
+  text-wrap: pretty;
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.confirm-card .dialog-body {
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+.dialog-actions {
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  display: grid;
+}
+
+.dialog-actions.single {
+  grid-template-columns: 1fr;
+  margin-top: 6px;
+}
+
+.settings-group {
+  border-bottom: 2px dashed var(--divider);
+  padding: 16px 0 6px;
+}
+
+.settings-group:last-child {
+  border-bottom: 0;
+}
+
+.settings-group.about p {
+  color: var(--muted);
+  margin: 0 0 6px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.settings-group.about p:first-of-type {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.info-sheet .best-row {
+  border-top: 2px dashed var(--divider);
+  padding: 14px 0 8px;
+}
+
+.info-sheet .pen-progress {
+  margin-top: 2px;
+}
+
+[data-motion=reduce] :is(.modal-overlay,.modal-card,.modal-card.sheet,.result,.result-card) {
+  animation: none;
+}
+
+body:has(.modal-overlay .confirm-card) .modal-overlay:has(>.pause-card) {
+  visibility: hidden;
+}
+
+.modal-card.pen-info-card {
+  width: min(344px,100%);
+  box-shadow: 0 7px 0 var(--outline);
+  border-radius: 24px;
+  padding: 14px 16px 8px;
+}
+
+.help-sheet .help-body {
+  -webkit-overflow-scrolling: touch;
+  gap: 10px;
+  padding-top: 14px;
+  display: grid;
+}
+
+.settings-group .keep-line {
+  text-align: start;
+  justify-content: flex-start;
+  margin: 0 0 10px;
+  font-size: 12px;
+}

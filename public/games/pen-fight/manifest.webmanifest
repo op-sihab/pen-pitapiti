@@ -1,0 +1,35 @@
+{
+  "id": "./",
+  "name": "INKFALL — The Margin Duel",
+  "short_name": "INKFALL",
+  "lang": "en",
+  "dir": "ltr",
+  "description": "A sumi-e pen duel. Flick your pen, knock your rival off the desk, and leave the last mark. Play the machine or a friend on one device.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "display_override": [
+    "fullscreen",
+    "standalone"
+  ],
+  "orientation": "any",
+  "background_color": "#f4f1e8",
+  "theme_color": "#f4f1e8",
+  "categories": [
+    "games"
+  ],
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

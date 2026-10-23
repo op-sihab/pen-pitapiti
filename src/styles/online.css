@@ -1,0 +1,882 @@
+/* ==========================================================================
+   PEN FIGHT NATIVE RETRO TACTILE THEME - ONLINE DUEL MODE
+   ========================================================================== */
+
+/* -------------------------------------------------------------
+   1. RETRO CLAY & TACTILE FONTS (FREDOKA & NUNITO)
+   ------------------------------------------------------------- */
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url(/games/pen-fight/assets/fredoka-latin-600-normal-C4zohCW5.woff2) format("woff2"),
+       url(/games/pen-fight/assets/fredoka-latin-600-normal-CcrEjrB4.woff) format("woff");
+}
+
+@font-face {
+  font-family: 'Fredoka';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(/games/pen-fight/assets/fredoka-latin-700-normal-BOIZVyIN.woff2) format("woff2"),
+       url(/games/pen-fight/assets/fredoka-latin-700-normal-C8FeHd3X.woff) format("woff");
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(/games/pen-fight/assets/nunito-latin-700-normal-Dort48En.woff2) format("woff2"),
+       url(/games/pen-fight/assets/nunito-latin-700-normal-OcDqTBcA.woff) format("woff");
+}
+
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  src: url(/games/pen-fight/assets/nunito-latin-800-normal-Dz8SOQK_.woff2) format("woff2"),
+       url(/games/pen-fight/assets/nunito-latin-800-normal-D-J0wlBY.woff) format("woff");
+}
+
+:root {
+  --font-title: 'Fredoka', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Nunito', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Who-screen card tile */
+.who-tile.online {
+  background: #fed7aa;
+  border: 3px solid #2F3B4B;
+  box-shadow: 0 5px 0 #2F3B4B;
+}
+
+.who-card[data-choose="online"] {
+  position: relative;
+}
+
+.who-card[data-choose="online"]::after {
+  content: "LIVE";
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: #10b981;
+  color: #fff;
+  font-family: var(--font-title);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+}
+
+/* ==========================================================================
+   ONLINE MODAL - Pen Fight 3D Clay Aesthetic
+   ========================================================================== */
+
+.online-modal-backdrop.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  animation: onlineFadeIn 0.18s ease-out;
+}
+
+@keyframes onlineFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.online-modal-card.modal-card {
+  background: #242f40;
+  border: 3.5px solid #2F3B4B;
+  box-shadow: 0 10px 0 #151d28, 0 20px 45px rgba(0, 0, 0, 0.65);
+  border-radius: 28px;
+  width: 100%;
+  max-width: 440px;
+  padding: 24px;
+  color: #FAF3E0;
+  font-family: var(--font-body);
+  animation: onlineScaleUp 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+@keyframes onlineScaleUp {
+  from { transform: scale(0.9) translateY(12px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Modal Header */
+.online-dialog-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px dashed rgba(255, 255, 255, 0.12);
+}
+
+.online-dialog-tile {
+  width: 58px;
+  height: 58px;
+  background: #fed7aa;
+  border: 3px solid #2F3B4B;
+  box-shadow: 0 4px 0 #2F3B4B;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  transform: rotate(-3deg);
+}
+
+.online-head-text {
+  flex: 1;
+}
+
+.online-dialog-title {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fef08a;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+  line-height: 1.15;
+}
+
+.online-dialog-subtitle {
+  margin: 2px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+.online-close-key.close-key {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #182232;
+  border: 2.5px solid #2F3B4B;
+  box-shadow: 0 3px 0 #121824;
+  color: #FAF3E0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.online-close-key.close-key:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #121824;
+}
+
+/* Name Input Field */
+.online-field-group {
+  margin-bottom: 18px;
+}
+
+.online-field-label {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+}
+
+.online-input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.online-tactile-input {
+  width: 100%;
+  background: #161e2b;
+  border: 3px solid #2F3B4B;
+  box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.35);
+  border-radius: 14px;
+  padding: 12px 42px 12px 16px;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fef08a;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.online-tactile-input:focus {
+  border-color: #f59e0b;
+  box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.35), 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.online-pen-badge {
+  position: absolute;
+  right: 14px;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Segmented Tabs (Tactile Clay) */
+.online-segmented-tabs {
+  display: flex;
+  gap: 8px;
+  background: #161e2b;
+  border: 2.5px solid #2F3B4B;
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.3);
+  padding: 4px;
+  border-radius: 16px;
+  margin-bottom: 18px;
+}
+
+.online-segment-tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 8px;
+  border-radius: 12px;
+  font-family: var(--font-title);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.online-segment-tab.active {
+  background: #f59e0b;
+  color: #182232;
+  border: 2px solid #2F3B4B;
+  box-shadow: 0 3px 0 #b45309;
+}
+
+/* Arena Desk Picker Chips */
+.online-desk-picker {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 6px;
+  margin-bottom: 14px;
+}
+
+.online-desk-chip {
+  background: #182232;
+  border: 2px solid #2F3B4B;
+  box-shadow: 0 3px 0 #121824;
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: #FAF3E0;
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: all 0.12s ease;
+}
+
+.online-desk-chip:hover {
+  background: #232f42;
+  transform: translateY(-1px);
+}
+
+.online-desk-chip.active {
+  background: #f59e0b;
+  color: #182232;
+  border-color: #2F3B4B;
+  box-shadow: 0 3px 0 #b45309;
+}
+
+.desk-chip-icon {
+  font-size: 1.15rem;
+}
+
+/* Tab Bodies */
+.online-tab-body {
+  margin-bottom: 10px;
+}
+
+.online-desc-note {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: #cbd5e1;
+  font-weight: 700;
+  margin: 0 0 16px;
+  text-align: center;
+}
+
+/* Chunky Buttons */
+.online-main-cta.chunky-button.primary {
+  width: 100%;
+  background: #f59e0b;
+  color: #182232;
+  border: 3px solid #2F3B4B;
+  box-shadow: 0 5px 0 #2F3B4B;
+  border-radius: 16px;
+  padding: 14px 20px;
+  font-family: var(--font-title);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.online-main-cta.chunky-button.primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #2F3B4B;
+}
+
+.online-main-cta:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Join Row */
+.online-join-row {
+  display: flex;
+  gap: 10px;
+}
+
+.online-join-row .code-input {
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.online-join-cta.chunky-button.primary {
+  background: #f59e0b;
+  color: #182232;
+  border: 3px solid #2F3B4B;
+  box-shadow: 0 5px 0 #2F3B4B;
+  border-radius: 14px;
+  padding: 0 24px;
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.online-join-cta:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #2F3B4B;
+}
+
+/* Active Room Banner */
+.online-code-banner {
+  background: #161e2b;
+  border: 3px dashed #f59e0b;
+  border-radius: 20px;
+  padding: 18px 16px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.online-banner-eyebrow {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.online-banner-code {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: #fef08a;
+  text-shadow: 0 3px 0 rgba(0, 0, 0, 0.45);
+  margin-bottom: 14px;
+}
+
+.online-copy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.online-copy-btn.mbtn {
+  background: #242f40;
+  border: 2.5px solid #2F3B4B;
+  box-shadow: 0 3px 0 #151d28;
+  border-radius: 12px;
+  padding: 10px 10px;
+  font-family: var(--font-title);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #FAF3E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.online-copy-btn.mbtn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #151d28;
+}
+
+/* Presence Card */
+.online-presence-card {
+  background: #182232;
+  border: 2.5px solid #2F3B4B;
+  box-shadow: 0 4px 0 #121824;
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.online-waiting-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.online-live-radar {
+  width: 14px;
+  height: 14px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #10b981;
+  animation: radarPulse 1.4s infinite;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 16px #10b981; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.online-radar-text {
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: #cbd5e1;
+}
+
+/* Duel Roster */
+.online-duel-roster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.roster-name {
+  padding: 6px 14px;
+  border-radius: 12px;
+  border: 2.5px solid #2F3B4B;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.roster-name.p1 {
+  background: #fed7aa;
+  color: #c2410c;
+  box-shadow: 0 3px 0 #c2410c;
+}
+
+.roster-name.p2 {
+  background: #bae6fd;
+  color: #0369a1;
+  box-shadow: 0 3px 0 #0369a1;
+}
+
+.roster-clash {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fef08a;
+  animation: clashWobble 2s infinite ease-in-out;
+}
+
+@keyframes clashWobble {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.15) rotate(4deg); }
+}
+
+.online-ready-cheer {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #10b981;
+  margin: 0 0 14px;
+}
+
+.online-start-duel-btn.chunky-button.primary {
+  width: 100%;
+  background: #10b981;
+  color: #ffffff;
+  border: 3px solid #2F3B4B;
+  box-shadow: 0 5px 0 #047857;
+  border-radius: 16px;
+  padding: 14px 20px;
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  animation: pulseStart 2s infinite ease-in-out;
+}
+
+@keyframes pulseStart {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.online-leave-lobby-btn.mbtn {
+  width: 100%;
+  background: #ef4444;
+  color: #ffffff;
+  border: 2.5px solid #2F3B4B;
+  box-shadow: 0 3px 0 #991b1b;
+  border-radius: 14px;
+  padding: 10px;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.online-leave-lobby-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #991b1b;
+}
+
+.online-error-banner {
+  background: #7f1d1d;
+  border: 2px solid #ef4444;
+  color: #fecaca;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ==========================================================================
+   IN-GAME HUD (Top Status Bar + Bottom Reaction Dock)
+   ========================================================================== */
+
+/* Completely hide ALL native match HUD elements during online matches */
+body.is-online-match .game-bar,
+body.is-online-match .turn-pill,
+body.is-online-match #turn-pill,
+body.is-online-match #turn-hint,
+body.is-online-match #pause-button,
+body.is-online-match .pause-key,
+body.is-online-match #status,
+body.is-online-match .hot-seat,
+body.is-online-match .play-area > .game-bar,
+body.is-online-match .play-area > .turn-pill,
+body.is-online-match .play-area > .pause-key,
+body.is-online-match .play-area > #turn-pill,
+body.is-online-match .play-area > #pause-button {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* 1. TOP STATUS BAR (Unified Solid Capsule, Single Line, Never Wraps) */
+.online-top-bar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: min(520px, calc(100% - 16px));
+  height: 48px;
+  background: #1e2638;
+  border: 3px solid #2F3B4B;
+  box-shadow: 0 5px 0 #121824, 0 10px 24px rgba(0, 0, 0, 0.5);
+  border-radius: 22px;
+  padding: 4px 8px 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+
+.top-live-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  flex-shrink: 0;
+}
+
+.live-text {
+  color: #10b981;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.live-code {
+  color: #fef08a;
+  letter-spacing: 0.5px;
+  background: #131b28;
+  border: 1.5px solid #2F3B4B;
+  border-radius: 8px;
+  padding: 2px 6px;
+  font-size: 0.72rem;
+}
+
+.top-turn-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.top-turn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 14px;
+  border: 2px solid #2F3B4B;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.top-turn-pill.my-turn {
+  background: #f59e0b;
+  color: #182232;
+  box-shadow: 0 3px 0 #b45309;
+  animation: myTurnPulse 2s infinite ease-in-out;
+}
+
+@keyframes myTurnPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.top-turn-pill.opp-turn {
+  background: #2b374d;
+  color: #cbd5e1;
+  box-shadow: 0 3px 0 #151d28;
+}
+
+.turn-bullet {
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.turn-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-leave-box {
+  flex-shrink: 0;
+}
+
+.top-leave-btn {
+  background: #ef4444;
+  border: 2px solid #2F3B4B;
+  box-shadow: 0 3px 0 #991b1b;
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.top-leave-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #991b1b;
+}
+
+/* 2. BOTTOM FLOATING REACTION DOCK */
+.online-reaction-dock {
+  position: fixed;
+  bottom: max(14px, env(safe-area-inset-bottom, 14px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.reaction-dock-pill {
+  background: #1e2638;
+  border: 3px solid #2F3B4B;
+  box-shadow: 0 6px 0 #121824, 0 12px 28px rgba(0, 0, 0, 0.55);
+  border-radius: 24px;
+  padding: 5px 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.online-dock-reaction-btn {
+  background: #141c2b;
+  border: 2px solid #2F3B4B;
+  box-shadow: 0 3px 0 #0f1520;
+  border-radius: 12px;
+  padding: 6px 9px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.12s, box-shadow 0.12s, background-color 0.12s;
+}
+
+.online-dock-reaction-btn:hover {
+  background: #253347;
+  transform: translateY(-2px) scale(1.12);
+  box-shadow: 0 4px 0 #2F3B4B;
+}
+
+.online-dock-reaction-btn:active {
+  transform: translateY(2px) scale(0.95);
+  box-shadow: 0 1px 0 #0f1520;
+}
+
+/* Floating Animated Stickers */
+.floating-emojis-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+}
+
+.floating-reaction-sticker {
+  position: absolute;
+  bottom: 24%;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.6));
+  animation: floatReaction 2.2s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes floatReaction {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(-35px) scale(1.25) rotate(-6deg);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-160px) scale(1.05) rotate(4deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-250px) scale(0.85);
+    opacity: 0;
+  }
+}
+
+/* Responsive Narrow Screen (< 480px) */
+@media (max-width: 480px) {
+  .online-top-bar {
+    top: 8px;
+    height: 44px;
+    padding: 3px 6px 3px 10px;
+    gap: 6px;
+    width: calc(100% - 16px);
+  }
+
+  .live-code {
+    display: none; /* Hide code on small phones to keep title spacious */
+  }
+
+  .top-turn-pill {
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    gap: 4px;
+  }
+
+  .top-leave-btn {
+    padding: 5px 8px;
+    font-size: 0.74rem;
+  }
+
+  .leave-text {
+    display: none; /* Icon-only on very narrow phones */
+  }
+
+  .top-leave-btn svg {
+    margin-right: 0 !important;
+  }
+
+  .reaction-dock-pill {
+    padding: 4px 6px;
+    gap: 5px;
+  }
+
+  .online-dock-reaction-btn {
+    padding: 5px 7px;
+  }
+}

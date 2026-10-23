@@ -1,0 +1,50 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+/.tools/
+
+# testing & logs
+*.log
+.serve-*.log
+server-*.log
+spawn-*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# next.js build
+/.next/
+/out/
+tsconfig.tsbuildinfo
+
+# production
+/build
+
+# environment
+.env*.local
+
+# temporary scratch and test scripts
+/home-debug.png
+/test-*.png
+/test-*.js
+/verify-*.js
+/inspect-*.js
+/extract-*.js
+/apply-*.js
+/patch-*.js
+/fix-*.js
+/generate-*.js
+/build-full-bn-locale.js
+/take-gameplay-shots.js
+/run-deep-diagnostic.js
+/find-*.js
+/*.bak
+remaining-keys.json
+all-keys.json
+bn-keys.json
+en-keys.json
+
+# os files
+.DS_Store
+Thumbs.db

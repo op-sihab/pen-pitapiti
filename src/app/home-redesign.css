@@ -1,0 +1,312 @@
+/* ==========================================================================
+   PEN FIGHT · DESKTOP HOME REDESIGN
+   Applies only to wide desktop viewports; phones & portrait stay untouched.
+   Layers on top of globals.css — no new DOM elements, pseudo-elements only.
+   Concept: lit school desk with a warm spotlight — glossy candy Play key,
+   wax-sealed sub keys with tinted icon coins, tilted sticker wordmark.
+   ========================================================================== */
+
+@media (width>=900px) and (height>=600px) {
+
+  :root {
+    --home-lift: 0 18px 36px -14px color-mix(in srgb, var(--vignette) 62%, var(--transparent));
+  }
+
+  /* ------------------------------------------------------------------------
+     1. SCENE · warm spotlight, inked edges
+     ------------------------------------------------------------------------ */
+
+  #main-menu[data-screen=home]:before {
+    filter: brightness(.9) saturate(1.02);
+  }
+
+  #main-menu[data-screen=home]:after {
+    background:
+      radial-gradient(ellipse 62% 34% at 50% 3%, color-mix(in srgb, var(--yellow) 11%, var(--transparent)), transparent 78%),
+      radial-gradient(circle 430px at 50% 17%, color-mix(in srgb, var(--yellow) 8%, var(--transparent)), transparent 88%),
+      radial-gradient(ellipse 90% 70% at 50% 44%, color-mix(in srgb, var(--vignette) 30%, var(--transparent)), color-mix(in srgb, var(--vignette) 76%, var(--transparent)));
+  }
+
+  /* ------------------------------------------------------------------------
+     2. WORDMARK · sticker treatment on the existing SVG logo
+     ------------------------------------------------------------------------ */
+
+  .mh-logo {
+    position: relative;
+    gap: 0;
+  }
+
+  .mh-logo:before {
+    content: "";
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 60% 62% at 50% 46%, color-mix(in srgb, var(--yellow) 15%, var(--transparent)), transparent 78%);
+    filter: blur(2px);
+    position: absolute;
+    inset: -34px -80px;
+  }
+
+  .wordmark {
+    width: min(392px, 74vw);
+    transform: rotate(-2.5deg);
+    filter: drop-shadow(0 4px 0 color-mix(in srgb, var(--navy) 34%, var(--transparent))) drop-shadow(0 16px 30px color-mix(in srgb, var(--vignette) 56%, var(--transparent)));
+  }
+
+  .wordmark .wm-face {
+    fill: color-mix(in srgb, var(--cream) 82%, var(--white));
+  }
+
+  .wordmark .wm-hi {
+    fill: color-mix(in srgb, var(--yellow) 90%, var(--orange) 10%);
+  }
+
+  .mh-edition {
+    z-index: 1;
+    color: var(--navy);
+    background: var(--yellow);
+    border-radius: 9px;
+    margin-top: -2px;
+    padding: 6px 13px;
+    font-size: 10.5px;
+    letter-spacing: .18em;
+    box-shadow: 0 2px 0 var(--yellowLip), 0 10px 18px -6px color-mix(in srgb, var(--vignette) 45%, var(--transparent));
+    transform: rotate(-3deg);
+  }
+
+  /* ------------------------------------------------------------------------
+     3. HELP SEAL · round brass badge, top right
+     ------------------------------------------------------------------------ */
+
+  .mh-help {
+    color: var(--goldText);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--white) 46%, var(--transparent)), transparent 46%),
+      var(--yellow);
+    box-shadow: 0 5px 0 var(--yellowLip), var(--home-lift);
+    border-radius: 50%;
+    transition: transform .14s var(--ease-out), box-shadow .14s var(--ease-out);
+  }
+
+  @media (hover:hover) {
+    .mh-help:hover {
+      box-shadow: 0 7px 0 var(--yellowLip), var(--home-lift);
+      transform: translateY(-2px) rotate(4deg);
+    }
+  }
+
+  .mh-help:active {
+    box-shadow: 0 1px 0 var(--yellowLip);
+    transform: translateY(3px) rotate(4deg);
+  }
+
+  /* ------------------------------------------------------------------------
+     4. PLAY KEY · glossy candy button
+     ------------------------------------------------------------------------ */
+
+  .mh-play {
+    --lift: 8px;
+    position: relative;
+    overflow: hidden;
+    height: 84px;
+    font-size: 33px;
+    letter-spacing: .04em;
+    border-radius: 26px;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--white) 55%, var(--yellow) 45%), transparent 52%),
+      linear-gradient(180deg, color-mix(in srgb, var(--yellow) 78%, var(--orange) 22%), color-mix(in srgb, var(--yellow) 68%, var(--yellowLip) 32%));
+    box-shadow:
+      0 var(--lift) 0 var(--outline),
+      inset 0 2px 0 color-mix(in srgb, var(--white) 40%, var(--transparent)),
+      var(--home-lift);
+  }
+
+  .mh-play svg {
+    filter: drop-shadow(0 2px 0 color-mix(in srgb, var(--navy) 26%, var(--transparent)));
+    transition: transform .18s var(--ease-spring);
+  }
+
+  .mh-play:after {
+    content: "";
+    position: absolute;
+    top: -14%;
+    bottom: -14%;
+    left: -22%;
+    width: 60px;
+    background: linear-gradient(100deg, transparent 0%, color-mix(in srgb, var(--white) 35%, var(--transparent)) 50%, transparent 100%);
+    transform: skewX(-16deg);
+    transition: left .5s var(--ease-out);
+    pointer-events: none;
+  }
+
+  @media (hover:hover) {
+    .mh-play:hover {
+      --lift: 9px;
+      transform: translateY(-2px);
+      box-shadow:
+        0 var(--lift) 0 var(--outline),
+        inset 0 2px 0 color-mix(in srgb, var(--white) 45%, var(--transparent)),
+        var(--home-lift);
+      filter: brightness(1.03);
+    }
+
+    .mh-play:hover:after {
+      left: 108%;
+    }
+
+    .mh-play:hover svg {
+      transform: scale(1.08);
+    }
+  }
+
+  .mh-play:active {
+    --lift: 2px;
+    transform: translateY(calc(var(--lift) + 1px));
+    filter: brightness(.97);
+  }
+
+  /* ------------------------------------------------------------------------
+     5. SUB KEYS · wax-sealed tiles with tinted icon coins
+     ------------------------------------------------------------------------ */
+
+  .mh-small.three {
+    gap: 12px;
+  }
+
+  .mh-small.three .mh-key {
+    position: relative;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--white) 72%, var(--card) 28%), var(--card) 40%);
+    border-radius: 18px;
+    min-height: 68px;
+    box-shadow: 0 5px 0 var(--outline);
+  }
+
+  .mh-small.three .mh-key svg {
+    box-sizing: content-box;
+    width: 22px;
+    height: 22px;
+    padding: 7px;
+    color: var(--bg);
+    background:
+      radial-gradient(circle at 32% 26%, color-mix(in srgb, var(--white) 55%, var(--transparent)), transparent 60%),
+      var(--tint, var(--iconTile));
+    border-radius: 50%;
+    box-shadow: 0 2px 0 color-mix(in srgb, var(--tint, var(--iconTile)) 55%, var(--navy) 45%);
+    transition: transform .18s var(--ease-spring);
+  }
+
+  .mh-small.three .mh-key:nth-child(1) {
+    --tint: color-mix(in srgb, var(--yellow) 82%, var(--orange) 18%);
+    --bg: var(--goldText);
+  }
+
+  .mh-small.three .mh-key:nth-child(2) {
+    --tint: color-mix(in srgb, var(--sage) 86%, var(--green) 14%);
+    --bg: color-mix(in srgb, var(--green) 78%, var(--navy) 22%);
+  }
+
+  .mh-small.three .mh-key:nth-child(3) {
+    --tint: var(--p2);
+    --bg: color-mix(in srgb, var(--inkBlue) 80%, var(--navy) 20%);
+  }
+
+  @media (hover:hover) {
+    .mh-small.three .mh-key:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--outline), var(--home-lift);
+    }
+
+    .mh-small.three .mh-key:hover svg {
+      transform: scale(1.07) rotate(-3deg);
+    }
+  }
+
+  .mh-small.three .mh-key:active {
+    box-shadow: 0 2px 0 var(--outline);
+    transform: translateY(3px);
+  }
+
+  .mh-small.three .mh-key>span {
+    letter-spacing: .01em;
+  }
+
+  /* ------------------------------------------------------------------------
+     6. PLAYS STAMP
+     ------------------------------------------------------------------------ */
+
+  .mh-played {
+    color: color-mix(in srgb, var(--cream) 92%, var(--transparent));
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin: -6px 0 -4px;
+  }
+
+  /* ------------------------------------------------------------------------
+     7. PEN BATTLE GLOW · spotlight behind the animated pens
+     ------------------------------------------------------------------------ */
+
+  .bump:before {
+    content: "";
+    pointer-events: none;
+    background: radial-gradient(ellipse 58% 60% at 50% 56%, color-mix(in srgb, var(--yellow) 10%, var(--transparent)), transparent 78%);
+    position: absolute;
+    inset: -30px -60px;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   8. BOARD DOODLES · chalk margin art on very wide desks
+   ------------------------------------------------------------------------ */
+
+@media (width>=1280px) and (min-height:600px) {
+
+  .mh:before,
+  .mh:after {
+    content: "";
+    pointer-events: none;
+    z-index: -2;
+    position: fixed;
+    opacity: .4;
+  }
+
+  .mh:before {
+    left: 34px;
+    bottom: 44px;
+    width: 190px;
+    height: 118px;
+    border: 3px dashed color-mix(in srgb, var(--cream) 42%, var(--transparent));
+    border-radius: 84px 34px 92px 30px / 54px 84px 40px 96px;
+    background:
+      radial-gradient(circle 5px at 76% 40%, color-mix(in srgb, var(--yellow) 68%, var(--transparent)), transparent),
+      radial-gradient(circle 4px at 87% 58%, color-mix(in srgb, var(--yellow) 52%, var(--transparent)), transparent);
+    transform: rotate(-6deg);
+  }
+
+  .mh:after {
+    right: 38px;
+    top: 27%;
+    width: 118px;
+    height: 118px;
+    border: 2px solid color-mix(in srgb, var(--cream) 30%, var(--transparent));
+    background:
+      linear-gradient(color-mix(in srgb, var(--cream) 28%, var(--transparent)), color-mix(in srgb, var(--cream) 28%, var(--transparent))) 50% 0 / 2px 100% no-repeat,
+      linear-gradient(color-mix(in srgb, var(--cream) 28%, var(--transparent)), color-mix(in srgb, var(--cream) 28%, var(--transparent))) 0 50% / 100% 2px no-repeat;
+    border-radius: 10px;
+    transform: rotate(4deg);
+    mask-image: radial-gradient(circle 76px at 50% 50%, #000 62%, transparent 96%);
+    -webkit-mask-image: radial-gradient(circle 76px at 50% 50%, #000 62%, transparent 96%);
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Keyboard users keep a crisp ring on every home key.
+   ------------------------------------------------------------------------ */
+
+@media (width>=900px) and (height>=600px) {
+  :root[data-input=keyboard] .mh-play:focus-visible,
+  :root[data-input=keyboard] .mh-small.three .mh-key:focus-visible,
+  :root[data-input=keyboard] .mh-help:focus-visible {
+    outline: 3px solid var(--inkBlue);
+    outline-offset: 3px;
+  }
+}

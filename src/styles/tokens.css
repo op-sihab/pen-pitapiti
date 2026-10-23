@@ -1,0 +1,220 @@
+/* ==========================================================================
+   1. TOKENS & DESIGN VARIABLES
+   Color palettes, typography tokens, elevation bevels, border radii, shadows
+   ========================================================================== */
+
+:root {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--page);
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  font-weight: 700;
+}
+
+:root {
+  --outline: var(--navy);
+  --raised: var(--card);
+  --sunk: var(--page);
+}
+
+/* --------------------------------------------------------------------------
+   PALETTE
+   These values previously existed only inside the engine bundle as packed
+   RGB integers, so every var(--navy) / var(--cream) / var(--wood) reference
+   in the stylesheets resolved to nothing. They are restored here, unchanged,
+   so the DOM chrome matches the canvas renderer exactly.
+   -------------------------------------------------------------------------- */
+:root {
+  --card: #f6eedb;
+  --text: #2f3b4b;
+  --deskText: #2f3b4b;
+  --cream: #f6eedb;
+  --cardLip: #d9c79e;
+  --yellow: #f4cf5a;
+  --yellowLip: #c5a23d;
+  --navy: #2f3b4b;
+  --navyLip: #1e2837;
+  --muted: #5a6574;
+  --gold: #a8897a;
+  --goldText: #75602a;
+  --divider: #e2d3ad;
+  --page: #f4ebd4;
+  --arena: #dfe7e7;
+  --p1: #f4d3b6;
+  --p1Lip: #c79569;
+  --p2: #9dc8ea;
+  --p2Lip: #699bbf;
+  --sage: #cfe2c4;
+  --blue: #9dc8ea;
+  --orange: #e0a05b;
+  --inkBlue: #3d7fd0;
+  --wood: #e4c99d;
+  --edge: #b18c6c;
+  --red: #c85b58;
+  --green: #668648;
+  --white: #fff;
+  --metal: #d8dcde;
+  --transparent: transparent;
+}
+
+/* Ink palette — used by the pen colour pills. */
+:root {
+  --ink-blue: #3d7fd0;
+  --ink-black: #212121;
+  --ink-red: #e53935;
+  --ink-crimson: #e53935;
+  --ink-gold: #fbc02d;
+  --ink-cyan: #00bcd4;
+  --ink-orange: #ff9800;
+  --ink-pink: #e91e63;
+  --ink-violet: #8b5cf6;
+  --ink-green: #22c55e;
+  --ink-teal: #0d9488;
+  --ink-white: #f8fafc;
+}
+
+/* Radii, elevation and motion scale shared by the React shell. */
+:root {
+  --card-radius: 20px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --r-pill: 999px;
+  --lip: 5px;
+  --lip-sm: 3px;
+  --lip-lg: 7px;
+  --shadow-soft: 0 2px 10px rgb(47 59 75 / 8%);
+  --shadow-float: 0 10px 30px rgb(47 59 75 / 16%);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 120ms;
+  --dur-med: 200ms;
+  --dur-slow: 340ms;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+}
+
+/* --------------------------------------------------------------------------
+   THEMES — same five presets the engine uses (light/dark/midnight/cyber/forest)
+   -------------------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  --page: #1f2a3a;
+  --arena: #243040;
+  --card: #2b3543;
+  --cardLip: #18202b;
+  --text: #f6eedb;
+  --muted: #bdc2cf;
+  --gold: #e0c357;
+  --goldText: #e0c357;
+  --divider: #454a4f;
+  --wood: #847562;
+  --edge: #533f30;
+  color-scheme: dark;
+}
+
+:root[data-theme="midnight"] {
+  --page: #111428;
+  --arena: #161a20;
+  --card: #1c2228;
+  --cardLip: #10131f;
+  --text: #f3f2f2;
+  --muted: #9ca8af;
+  --gold: #d4b88f;
+  --goldText: #f59b4b;
+  --yellow: #d4b88f;
+  --yellowLip: #998259;
+  --divider: #2d323f;
+  --wood: #361f4f;
+  --edge: #221409;
+  color-scheme: dark;
+}
+
+:root[data-theme="cyber"] {
+  --page: #0a0c14;
+  --arena: #0e1310;
+  --card: #121704;
+  --cardLip: #070910;
+  --text: #e2f4ff;
+  --muted: #647a8b;
+  --gold: #ff2e7f;
+  --goldText: #ff2e7f;
+  --yellow: #00f0ff;
+  --yellowLip: #009baf;
+  --divider: #1e283b;
+  --wood: #3b5c11;
+  --edge: #1f3307;
+  color-scheme: dark;
+}
+
+:root[data-theme="forest"] {
+  --page: #141c11;
+  --arena: #1b2510;
+  --card: #223029;
+  --cardLip: #152214;
+  --text: #f0f8e9;
+  --muted: #829a7c;
+  --gold: #a3dfc7;
+  --goldText: #a3dfc7;
+  --yellow: #84cb9a;
+  --yellowLip: #4d7d5f;
+  --divider: #2f4236;
+  --wood: #4a3648;
+  --edge: #2e2321;
+  color-scheme: dark;
+}
+
+/* Layout hooks the match screen keeps in sync with the Pixi canvas size. */
+:root {
+  --desk-w: 0px;
+  --desk-h: 0px;
+  --hud-gap: clamp(8px, 1.4vw, 16px);
+}
+
+:root[data-input=pointer] :focus-visible,:root[data-input=pointer] canvas:focus {
+  outline: none;
+}
+
+:root[data-input=keyboard] :is(.chunky-button,.menu-key,.choice-chip,.choice-card,.close-key,.info-key,.pause-key,.switch):focus-visible {
+  outline: 3px solid var(--inkBlue);
+  outline-offset: 3px;
+}
+
+:root {
+  --type-heading: clamp(28px, 1.25rem + 2vw, 44px);
+  --type-panel: clamp(22px, 1rem + 1vw, 30px);
+  --type-body: clamp(16px, .875rem + .4vw, 20px);
+  --type-label: clamp(14px, .8rem + .2vw, 16px);
+  --gutter: clamp(16px, 3.34vw, 48px);
+}
+
+:root {
+  --vignette: color-mix(in srgb, var(--edge) 22%, var(--navyLip));
+}
+
+:root:root body:not(.in-match) {
+  background: var(--wood);
+}
+
+:root:root body:not(.in-match) main {
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+:root:root body:not(.in-match) :is(.masthead,.intro,footer) {
+  display: none;
+}
+
+:root[data-input=keyboard] .help-section summary:focus-visible {
+  outline: 3px solid var(--inkBlue);
+  outline-offset: 2px;
+}

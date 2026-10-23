@@ -1,0 +1,105 @@
+{
+  "source": "engine view.textures (offscreen canvas capture)",
+  "pens": {
+    "ballpoint": {
+      "w": 300,
+      "h": 16,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "gel": {
+      "w": 282,
+      "h": 22,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "click": {
+      "w": 282,
+      "h": 22,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "four": {
+      "w": 280,
+      "h": 18,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "fountain": {
+      "w": 288,
+      "h": 32,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "marker": {
+      "w": 288,
+      "h": 24,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "highlighter": {
+      "w": 274,
+      "h": 30,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "metal": {
+      "w": 210,
+      "h": 54,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "laser": {
+      "w": 280,
+      "h": 24,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    },
+    "naruto": {
+      "w": 296,
+      "h": 36,
+      "inks": [
+        "blue",
+        "red",
+        "green",
+        "black"
+      ]
+    }
+  }
+}

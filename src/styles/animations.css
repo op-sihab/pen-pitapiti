@@ -1,0 +1,205 @@
+/* ==========================================================================
+   8. ANIMATIONS & KEYFRAMES
+   Smooth entry transitions, shakes, bounces, reduced motion accessibility
+   ========================================================================== */
+
+@keyframes soft-shake {
+  0%,to {
+    translate: 0;
+  }
+
+  20% {
+    translate: -4px;
+  }
+
+  40% {
+    translate: 4px;
+  }
+
+  60% {
+    translate: -3px;
+  }
+
+  80% {
+    translate: 2px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .pick-confirm,.pick-back,.pen-arrow,.pen-dots i,.style-toggle button {
+    transition: none;
+  }
+
+  .mode-online.shake {
+    animation: none;
+  }
+}
+
+@keyframes loader-in {
+  0% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .desk-loader {
+    animation: none;
+  }
+
+  .desk-loader.leaving {
+    transition: none;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px)scale(.96);
+  }
+}
+
+@keyframes sheet-up {
+  0% {
+    transform: translateY(100%);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .modal-overlay,.modal-card,.result,.result-card {
+    animation: none;
+  }
+}
+
+@keyframes handoff-beat {
+  0% {
+    opacity: 0;
+    transform: translate(-50%,-50%)scale(.85);
+  }
+
+  18% {
+    opacity: 1;
+    transform: translate(-50%,-50%)scale(1.04);
+  }
+
+  30%,75% {
+    opacity: 1;
+    transform: translate(-50%,-50%)scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%,-50%)scale(1);
+  }
+}
+
+@keyframes handoff-fade {
+  0%,80% {
+    opacity: 1;
+    transform: translate(-50%,-50%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate(-50%,-50%);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .handoff.show {
+    animation: .8s linear both handoff-fade;
+  }
+}
+
+@keyframes timer-breath {
+  0%,to {
+    scale: 1;
+  }
+
+  50% {
+    scale: 1.04;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .turn-pill.timing {
+    animation: none;
+  }
+}
+
+@keyframes bump-drift {
+  0% {
+    translate: -6px 4px;
+  }
+
+  to {
+    translate: 6px -5px;
+  }
+}
+
+@keyframes pen-sway {
+  0% {
+    translate: 0;
+  }
+
+  to {
+    translate: 7px -4px;
+  }
+}
+
+@keyframes burst-pulse {
+  0%,to {
+    opacity: 1;
+    scale: 1;
+  }
+
+  50% {
+    opacity: .85;
+    scale: 1.08;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  :is(.bump-scene,.pen-fly,.pf-burst) {
+    animation: none;
+  }
+}
+
+@keyframes soon-in {
+  0% {
+    opacity: 0;
+    transform: translate(-50%,6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%);
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .pick-soon.show {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  #pen-picker .tswitch {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  body.in-match .desk-banner {
+    transition: none;
+  }
+}
